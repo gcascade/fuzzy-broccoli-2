@@ -6,14 +6,21 @@
 #
 black==24.4.2
     # via -r requirements.in
+build==1.2.1
+    # via pip-tools
 cachetools==5.3.3
     # via tox
+cfgv==3.4.0
+    # via pre-commit
 chardet==5.2.0
     # via tox
 click==8.1.7
-    # via black
+    # via
+    #   black
+    #   pip-tools
 colorama==0.4.6
     # via
+    #   build
     #   click
     #   pytest
     #   tox
@@ -27,6 +34,8 @@ filelock==3.15.4
     #   virtualenv
 flake8==7.1.0
     # via -r requirements.in
+identify==2.5.36
+    # via pre-commit
 iniconfig==2.0.0
     # via pytest
 isort==5.13.2
@@ -39,14 +48,19 @@ mypy-extensions==1.0.0
     # via
     #   black
     #   mypy
+nodeenv==1.9.1
+    # via pre-commit
 packaging==24.1
     # via
     #   black
+    #   build
     #   pyproject-api
     #   pytest
     #   tox
 pathspec==0.12.1
     # via black
+pip-tools==7.4.1
+    # via -r requirements.in
 platformdirs==4.2.2
     # via
     #   black
@@ -56,6 +70,8 @@ pluggy==1.5.0
     # via
     #   pytest
     #   tox
+pre-commit==3.7.1
+    # via -r requirements.in
 pycodestyle==2.12.0
     # via flake8
 pyflakes==3.2.0
@@ -64,12 +80,20 @@ pygame==2.5.2
     # via -r requirements.in
 pyproject-api==1.7.1
     # via tox
+pyproject-hooks==1.1.0
+    # via
+    #   build
+    #   pip-tools
 pytest==8.2.2
     # via -r requirements.in
+pyyaml==6.0.1
+    # via pre-commit
 tomli==2.0.1
     # via
     #   black
+    #   build
     #   mypy
+    #   pip-tools
     #   pyproject-api
     #   pytest
     #   tox
@@ -80,4 +104,12 @@ typing-extensions==4.12.2
     #   black
     #   mypy
 virtualenv==20.26.3
-    # via tox
+    # via
+    #   pre-commit
+    #   tox
+wheel==0.43.0
+    # via pip-tools
+
+# The following packages are considered to be unsafe in a requirements file:
+# pip
+# setuptools

@@ -2,6 +2,8 @@ black
 flake8>=7.1.0
 isort
 mypy>=1.10.0
+pre-commit
+pip-tools
 pygame>=2.5.2
 pytest>=8.2.2
 tox>=4.15.1

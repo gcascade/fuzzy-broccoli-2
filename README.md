@@ -35,6 +35,11 @@
     pip install tox
     ```
 
+6. **Install pre-commit hooks**:
+    ```bash
+    pre-commit install
+    ```
+
 ## Usage
 
 1. **Run the game**:
@@ -46,7 +51,7 @@
     ```bash
     tox
     ```
-   
+
 ## Testing
 
 ### Run Tests
