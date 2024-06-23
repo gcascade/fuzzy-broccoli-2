@@ -79,3 +79,29 @@ To compile the requirements.txt file from requirements.in using pip-tools, run:
 ```bash
 tox -e requirements
 ```
+
+## Build Documentation
+To build the Sphinx documentation, run:
+
+```bash
+tox -e docs
+```
+
+Or manually navigate to the docs directory and run:
+* On Windows:
+   ```bash
+   cd docs
+   .\make.bat html
+   ```
+
+* On Unix:
+   ```bash
+    cd docs
+    make html
+    ```
+
+Alternatively, you can use the following command:
+
+```bash
+sphinx-build -b html docs/source docs/build/html
+```

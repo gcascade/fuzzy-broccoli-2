@@ -7,4 +7,5 @@ pip-tools
 pygame>=2.5.2
 pytest>=8.2.2
 pytest-cov
+sphinx
 tox>=4.15.1

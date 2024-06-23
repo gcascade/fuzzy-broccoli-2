@@ -1,3 +1,9 @@
+"""
+Fuzzy Broccoli 2
+
+This module initializes and runs the main game loop for Fuzzy Broccoli 2.
+"""
+
 import sys
 
 import pygame
