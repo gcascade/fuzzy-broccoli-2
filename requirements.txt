@@ -24,6 +24,8 @@ colorama==0.4.6
     #   click
     #   pytest
     #   tox
+coverage[toml]==7.5.4
+    # via pytest-cov
 distlib==0.3.8
     # via virtualenv
 exceptiongroup==1.2.1
@@ -85,6 +87,10 @@ pyproject-hooks==1.1.0
     #   build
     #   pip-tools
 pytest==8.2.2
+    # via
+    #   -r requirements.in
+    #   pytest-cov
+pytest-cov==5.0.0
     # via -r requirements.in
 pyyaml==6.0.1
     # via pre-commit
@@ -92,6 +98,7 @@ tomli==2.0.1
     # via
     #   black
     #   build
+    #   coverage
     #   mypy
     #   pip-tools
     #   pyproject-api
