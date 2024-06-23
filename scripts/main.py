@@ -1,5 +1,6 @@
-import pygame
 import sys
+
+import pygame
 
 # Initialize PyGame
 pygame.init()
@@ -8,7 +9,7 @@ pygame.init()
 screen_width = 800
 screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption('Fuzzy Broccoli 2')
+pygame.display.set_caption("Fuzzy Broccoli 2")
 
 
 # Main game loop
@@ -29,5 +30,5 @@ def game_loop():
     sys.exit()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     game_loop()
