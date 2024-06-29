@@ -5,7 +5,7 @@ mypy>=1.10.0
 pre-commit
 pip-tools
 pygame>=2.6.0
-pygame_gui>=0.6.12
+pygame_gui==0.6.9
 pytest>=8.2.2
 pytest-cov
 sphinx

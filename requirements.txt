@@ -102,7 +102,7 @@ pygame==2.6.0
     # via -r requirements.in
 pygame-ce==2.5.0
     # via pygame-gui
-pygame-gui==0.6.12
+pygame-gui==0.6.9
     # via -r requirements.in
 pygments==2.18.0
     # via sphinx
