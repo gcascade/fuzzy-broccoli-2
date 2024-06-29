@@ -6,6 +6,8 @@
 #
 alabaster==0.7.16
     # via sphinx
+altgraph==0.17.4
+    # via pyinstaller
 babel==2.15.0
     # via sphinx
 black==24.4.2
@@ -75,12 +77,16 @@ packaging==24.1
     # via
     #   black
     #   build
+    #   pyinstaller
+    #   pyinstaller-hooks-contrib
     #   pyproject-api
     #   pytest
     #   sphinx
     #   tox
 pathspec==0.12.1
     # via black
+pefile==2023.2.7
+    # via pyinstaller
 pip-tools==7.4.1
     # via -r requirements.in
 platformdirs==4.2.2
@@ -106,6 +112,10 @@ pygame-gui==0.6.9
     # via -r requirements.in
 pygments==2.18.0
     # via sphinx
+pyinstaller==6.8.0
+    # via -r requirements.in
+pyinstaller-hooks-contrib==2024.7
+    # via pyinstaller
 pyproject-api==1.7.1
     # via tox
 pyproject-hooks==1.1.0
@@ -120,6 +130,8 @@ pytest-cov==5.0.0
     # via -r requirements.in
 python-i18n==0.3.9
     # via pygame-gui
+pywin32-ctypes==0.2.2
+    # via pyinstaller
 pyyaml==6.0.1
     # via pre-commit
 requests==2.32.3

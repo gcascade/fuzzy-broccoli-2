@@ -105,3 +105,10 @@ Alternatively, you can use the following command:
 ```bash
 sphinx-build -b html docs/source docs/build/html
 ```
+
+## Building the Executable
+
+To build the executable file for your game, use the following command:
+```bash
+tox -e build
+```

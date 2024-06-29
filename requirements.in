@@ -6,6 +6,7 @@ pre-commit
 pip-tools
 pygame>=2.6.0
 pygame_gui==0.6.9
+pyinstaller
 pytest>=8.2.2
 pytest-cov
 sphinx
