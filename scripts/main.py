@@ -4,9 +4,9 @@ Fuzzy Broccoli 2
 This module initializes and runs the main game loop for Fuzzy Broccoli 2.
 """
 
-import sys
-
 import pygame
+
+from scripts.game import game_loop
 
 # Initialize PyGame
 pygame.init()
@@ -15,26 +15,8 @@ pygame.init()
 screen_width = 800
 screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
+clock = pygame.time.Clock()
 pygame.display.set_caption("Fuzzy Broccoli 2")
 
-
-# Main game loop
-def game_loop():
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        # Update game state
-
-        # Render to screen
-        screen.fill((0, 0, 0))  # Fill screen with black
-        pygame.display.flip()
-
-    pygame.quit()
-    sys.exit()
-
-
 if __name__ == "__main__":
-    game_loop()
+    game_loop(screen, clock)

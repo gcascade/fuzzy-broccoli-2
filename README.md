@@ -64,7 +64,7 @@ pytest
 We use Flake8 for linting and Mypy for type checking. To run these checks, use:
 ```bash
 flake8 .
-mypy scripts tests
+mypy scripts classes tests
 ```
 
 ## Run Code Formatting Checks

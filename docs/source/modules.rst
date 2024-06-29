@@ -1,18 +1,26 @@
 Modules
 =======
 
-Scripts Module
+Character Module
 ----------------
 
-.. automodule:: scripts.main
+.. automodule:: character
    :members:
    :undoc-members:
    :show-inheritance:
 
-Character Module
-----------------
+Game Module
+-----------
 
-.. automodule:: classes.character
+.. automodule:: game
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+UI Module
+---------
+
+.. automodule:: ui
    :members:
    :undoc-members:
    :show-inheritance:
