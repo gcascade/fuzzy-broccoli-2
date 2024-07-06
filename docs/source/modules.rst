@@ -1,26 +1,18 @@
 Modules
-=======
+===========
 
-Character Module
-----------------
+Classes Module
+-----------------
 
-.. automodule:: character
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. toctree::
+   :maxdepth: 1
 
-Game Module
------------
+   classes
 
-.. automodule:: game
-   :members:
-   :undoc-members:
-   :show-inheritance:
+Scripts Module
+-----------------
 
-UI Module
----------
+.. toctree::
+   :maxdepth: 1
 
-.. automodule:: ui
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   scripts

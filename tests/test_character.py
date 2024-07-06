@@ -1,4 +1,4 @@
-from classes.character import Character
+from classes.character.character import Character
 
 
 def test_character_initialization():

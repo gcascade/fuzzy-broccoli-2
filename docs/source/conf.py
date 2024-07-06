@@ -1,8 +1,7 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath("../../classes"))
-sys.path.insert(0, os.path.abspath("../../scripts"))
+sys.path.insert(0, os.path.abspath("../.."))
 
 # Configuration file for the Sphinx documentation builder.
 #
