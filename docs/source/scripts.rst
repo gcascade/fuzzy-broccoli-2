@@ -8,7 +8,6 @@ Subpackages
    :maxdepth: 4
 
    scripts.game
-   scripts.ui
 
 Module contents
 ---------------

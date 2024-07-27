@@ -16,3 +16,11 @@ Scripts Module
    :maxdepth: 1
 
    scripts
+
+UI Module
+-----------------
+
+.. toctree::
+   :maxdepth: 1
+
+   ui

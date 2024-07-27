@@ -1,9 +1,15 @@
+import os
 import sys
 
 import pygame
-import pygame_gui
 
-from scripts.ui import create_main_menu, create_start_screen, create_ui_manager
+sys.path.insert(
+    0, os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+)  # noqa: E402
+
+from ui.components.ui_manager import UIManager  # noqa: E402
+from ui.screens.main_menu_screen import MainMenuScreen  # noqa: E402
+from ui.screens.start_screen import StartScreen  # noqa: E402
 
 
 def game_loop(screen, clock):
@@ -13,41 +19,51 @@ def game_loop(screen, clock):
     :param screen: The Pygame display surface.
     :param clock: The Pygame clock.
     """
-    # Create a UI manager
-    manager = create_ui_manager(screen.get_width(), screen.get_height())
 
-    # Create the start screen elements
-    title_label, start_button = create_start_screen(manager)
-    menu_buttons = create_main_menu(manager)
+    width = screen.get_width()
+    height = screen.get_height()
+    ui_manager = UIManager(width, height)
 
     running = True
-    game_started = False
+
+    def play_game():
+        print("Play button clicked!")
+
+    def view_party():
+        print("View Party button clicked!")
+
+    def settings():
+        print("Settings button clicked!")
+
+    def quit_game():
+        nonlocal running
+        running = False
+
+    main_menu_screen_callbacks = {
+        "play": play_game,
+        "view_party": view_party,
+        "settings": settings,
+        "quit": quit_game,
+    }
+
+    main_menu_screen = MainMenuScreen(
+        ui_manager, width, height, main_menu_screen_callbacks
+    )
+
+    def start_game():
+        ui_manager.set_active_screen(main_menu_screen)
+
+    start_screen = StartScreen(ui_manager, width, height, start_game)
+    ui_manager.set_active_screen(start_screen)
     while running:
         time_delta = clock.tick(60) / 1000.0
         for event in pygame.event.get():
-            if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == start_button:
-                    game_started = True
-                    title_label.hide()
-                    start_button.hide()
-                    for button in menu_buttons.values():
-                        button.show()
-                elif game_started:
-                    if event.ui_element == menu_buttons["play"]:
-                        print("Play button clicked!")
-                    elif event.ui_element == menu_buttons["view_party"]:
-                        print("View Party button clicked!")
-                    elif event.ui_element == menu_buttons["settings"]:
-                        print("Settings button clicked!")
-                    elif event.ui_element == menu_buttons["quit"]:
-                        running = False
+            ui_manager.process_event(event)
 
-            manager.process_events(event)
-
-        manager.update(time_delta)
+        ui_manager.update(time_delta)
 
         screen.fill((0, 0, 0))
-        manager.draw_ui(screen)
+        ui_manager.draw_ui(screen)
         pygame.display.update()
 
     pygame.quit()
