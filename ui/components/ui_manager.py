@@ -75,3 +75,19 @@ class UIManager:
         :return: The pygame_gui.UIManager instance.
         """
         return self.manager
+
+    def get_height(self) -> int:
+        """
+        Get the height of the screen.
+
+        :return: The height of the screen.
+        """
+        return self.height
+
+    def get_width(self) -> int:
+        """
+        Get the width of the screen.
+
+        :return: The width of the screen.
+        """
+        return self.width

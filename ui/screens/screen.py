@@ -9,21 +9,15 @@ class Screen(ABC):
 
     Attributes:
     ui_manager (UIManager): The UIManager instance managing this screen.
-    width (int): The width of the screen.
-    height (int): The height of the screen.
     """
 
-    def __init__(self, ui_manager, width: int, height: int):
+    def __init__(self, ui_manager):
         """
         Initialize the base screen.
 
         :param ui_manager: The UIManager instance managing this screen.
-        :param width: The width of the screen.
-        :param height: The height of the screen.
         """
         self.ui_manager = ui_manager
-        self.width = width
-        self.height = height
 
     @abstractmethod
     def clear(self) -> None:

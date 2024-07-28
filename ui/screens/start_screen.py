@@ -16,19 +16,17 @@ class StartScreen(Screen):
     def __init__(
         self,
         ui_manager: UIManager,
-        width: int,
-        height: int,
         start_game_callback: Callable[[], None],
     ):
         """
         Initialize the start screen elements.
 
         :param ui_manager: The UIManager instance managing this screen.
-        :param width: The width of the screen.
-        :param height: The height of the screen.
         :param start_game_callback: The function to call when the start button is clicked.
         """
-        super().__init__(ui_manager, width, height)
+        super().__init__(ui_manager)
+        width = ui_manager.get_width()
+        height = ui_manager.get_height()
         self.title_label = Label(
             ui_manager=ui_manager,
             position=(int(5 / 16 * width), int(1 / 6 * height)),

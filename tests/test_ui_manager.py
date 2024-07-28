@@ -47,8 +47,8 @@ def test_ui_manager_clear_screen(setup_pygame):
 
 def test_ui_manager_set_active_screen(setup_pygame):
     screen, manager = setup_pygame
-    mock_screen = MockScreen(manager, 800, 600)
-    mock_screen2 = MockScreen(manager, 800, 600)
+    mock_screen = MockScreen(manager)
+    mock_screen2 = MockScreen(manager)
     manager.set_active_screen(mock_screen)
     assert manager.active_screen == mock_screen
     manager.set_active_screen(mock_screen2)
@@ -69,7 +69,7 @@ def test_ui_manager_update(setup_pygame):
 
 def test_ui_manager_process_event(setup_pygame):
     screen, manager = setup_pygame
-    mock_screen = MockScreen(manager, 800, 600)
+    mock_screen = MockScreen(manager)
     manager.set_active_screen(mock_screen)
     event = pygame.event.Event(pygame.USEREVENT, {})
     manager.process_event(event)

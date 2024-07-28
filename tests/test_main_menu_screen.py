@@ -27,8 +27,6 @@ def test_main_menu_screen_initialization(setup_pygame):
     }
     main_menu_screen = MainMenuScreen(
         ui_manager=manager,
-        width=800,
-        height=600,
         callbacks=callbacks,
     )
 
@@ -48,8 +46,6 @@ def test_main_menu_screen_clear(setup_pygame):
     }
     main_menu_screen = MainMenuScreen(
         ui_manager=manager,
-        width=800,
-        height=600,
         callbacks=callbacks,
     )
     main_menu_screen.activate()
@@ -71,8 +67,6 @@ def test_main_menu_screen_activate(setup_pygame):
     }
     main_menu_screen = MainMenuScreen(
         ui_manager=manager,
-        width=800,
-        height=600,
         callbacks=callbacks,
     )
     main_menu_screen.activate()
@@ -93,8 +87,6 @@ def test_main_menu_screen_handle_event(setup_pygame):
     }
     main_menu_screen = MainMenuScreen(
         ui_manager=manager,
-        width=800,
-        height=600,
         callbacks=callbacks,
     )
     main_menu_screen.activate()

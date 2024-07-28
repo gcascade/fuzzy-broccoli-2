@@ -3,13 +3,14 @@ import sys
 
 import pygame
 
+from ui.logic.screen_factory import ScreenFactory
+from ui.screen_type import ScreenType
+
 sys.path.insert(
     0, os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 )  # noqa: E402
 
 from ui.components.ui_manager import UIManager  # noqa: E402
-from ui.screens.main_menu_screen import MainMenuScreen  # noqa: E402
-from ui.screens.start_screen import StartScreen  # noqa: E402
 
 
 def game_loop(screen, clock):
@@ -26,34 +27,8 @@ def game_loop(screen, clock):
 
     running = True
 
-    def play_game():
-        print("Play button clicked!")
-
-    def view_party():
-        print("View Party button clicked!")
-
-    def settings():
-        print("Settings button clicked!")
-
-    def quit_game():
-        nonlocal running
-        running = False
-
-    main_menu_screen_callbacks = {
-        "play": play_game,
-        "view_party": view_party,
-        "settings": settings,
-        "quit": quit_game,
-    }
-
-    main_menu_screen = MainMenuScreen(
-        ui_manager, width, height, main_menu_screen_callbacks
-    )
-
-    def start_game():
-        ui_manager.set_active_screen(main_menu_screen)
-
-    start_screen = StartScreen(ui_manager, width, height, start_game)
+    screen_factory = ScreenFactory(ui_manager)
+    start_screen = screen_factory.create_screen(ScreenType.START)
     ui_manager.set_active_screen(start_screen)
     while running:
         time_delta = clock.tick(60) / 1000.0

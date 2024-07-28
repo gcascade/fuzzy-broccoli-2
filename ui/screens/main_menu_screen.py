@@ -15,20 +15,17 @@ class MainMenuScreen(Screen):
     def __init__(
         self,
         ui_manager: UIManager,
-        width: int,
-        height: int,
         callbacks: dict[str, Callable[[], None]],
     ):
         """
         Initialize the main menu screen elements.
 
         :param ui_manager: The UIManager instance managing this screen.
-        :param width: The width of the screen.
-        :param height: The height of the screen.
         :param callbacks: A dictionary of callbacks for the buttons.
         """
-        super().__init__(ui_manager, width, height)
-        super().__init__(ui_manager, width, height)
+        super().__init__(ui_manager)
+        height = ui_manager.get_height()
+        width = ui_manager.get_width()
 
         button_width = int(1 / 8 * width)
         button_height = int(1 / 12 * height)

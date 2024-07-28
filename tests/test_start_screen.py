@@ -22,8 +22,6 @@ def test_start_screen_initialization(setup_pygame):
     start_game_callback = Mock()
     start_screen = StartScreen(
         ui_manager=manager,
-        width=800,
-        height=600,
         start_game_callback=start_game_callback,
     )
 
@@ -38,8 +36,6 @@ def test_start_screen_clear(setup_pygame):
     start_game_callback = Mock()
     start_screen = StartScreen(
         ui_manager=manager,
-        width=800,
-        height=600,
         start_game_callback=start_game_callback,
     )
     start_screen.activate()
@@ -54,8 +50,6 @@ def test_start_screen_activate(setup_pygame):
     start_game_callback = Mock()
     start_screen = StartScreen(
         ui_manager=manager,
-        width=800,
-        height=600,
         start_game_callback=start_game_callback,
     )
     start_screen.activate()
@@ -69,8 +63,6 @@ def test_start_screen_handle_event(setup_pygame):
     start_game_callback = Mock()
     start_screen = StartScreen(
         ui_manager=manager,
-        width=800,
-        height=600,
         start_game_callback=start_game_callback,
     )
     start_screen.activate()
