@@ -12,8 +12,8 @@ from scripts.game import game_loop
 pygame.init()
 
 # Screen settings
-screen_width = 800
-screen_height = 600
+screen_width = 1024
+screen_height = 768
 screen = pygame.display.set_mode((screen_width, screen_height))
 clock = pygame.time.Clock()
 pygame.display.set_caption("Fuzzy Broccoli 2")
