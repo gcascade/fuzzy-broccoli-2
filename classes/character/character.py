@@ -10,13 +10,14 @@ class Character:
     level (int): The level of the character. Defaults to 1.
     """
 
-    def __init__(self, name, current_job, unlocked_jobs=[], xp=0, level=1):
+    def __init__(self, name, current_job, image_path, unlocked_jobs=[], xp=0, level=1):
         """
         Initialize a new character.
 
         Parameters:
         name (str): The name of the character.
         current_job (Job): The current job of the character.
+        image_path (str): The path to the character's image.
         unlocked_jobs (list): A list of jobs unlocked by the character. Defaults to an empty list.
         xp (int): The experience points of the character. Defaults to 0.
         level (int): The level of the character. Defaults to 1.
@@ -26,6 +27,52 @@ class Character:
         self.unlocked_jobs = unlocked_jobs
         self.xp = xp
         self.level = level
+        self.image_path = image_path
+
+    def get_name(self):
+        """
+        Get the name of the character.
+
+        Returns:
+        str: The name of the character.
+        """
+        return self.name
+
+    def get_xp(self):
+        """
+        Get the experience points of the character.
+
+        Returns:
+        int: The experience points of the character.
+        """
+        return self.xp
+
+    def get_job(self):
+        """
+        Get the current job of the character.
+
+        Returns:
+        Job: The current job of the character.
+        """
+        return self.current_job
+
+    def get_level(self):
+        """
+        Get the level of the character.
+
+        Returns:
+        int: The level of the character.
+        """
+        return self.level
+
+    def get_image_path(self):
+        """
+        Get the path to the character's image.
+
+        Returns:
+        str: The path to the character's image.
+        """
+        return self.image_path
 
     def add_xp(self, amount):
         """

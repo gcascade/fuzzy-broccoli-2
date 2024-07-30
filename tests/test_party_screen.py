@@ -31,6 +31,11 @@ def test_party_screen_initialization(setup_pygame):
         == "This is the party screen!\nHere you can view your party members."
     )
 
+    assert party_screen.character_1.character.get_name() == "Elaine"
+    assert party_screen.character_2.character.get_name() == "Arianne"
+    assert party_screen.character_3.character.get_name() == "Magnus"
+    assert party_screen.character_4.character.get_name() == "Roland"
+
 
 def test_party_screen_clear(setup_pygame):
     screen, manager = setup_pygame
@@ -44,6 +49,10 @@ def test_party_screen_clear(setup_pygame):
     assert not party_screen.title_label.get_instance().visible
     assert not party_screen.back_button.get_instance().visible
     assert not party_screen.message_box.get_instance().visible
+    assert not party_screen.character_1.image.get_instance().visible
+    assert not party_screen.character_2.image.get_instance().visible
+    assert not party_screen.character_3.image.get_instance().visible
+    assert not party_screen.character_4.image.get_instance().visible
 
 
 def test_party_screen_activate(setup_pygame):
@@ -57,6 +66,10 @@ def test_party_screen_activate(setup_pygame):
     assert party_screen.title_label.get_instance().visible
     assert party_screen.back_button.get_instance().visible
     assert party_screen.message_box.get_instance().visible
+    assert party_screen.character_1.image.get_instance().visible
+    assert party_screen.character_2.image.get_instance().visible
+    assert party_screen.character_3.image.get_instance().visible
+    assert party_screen.character_4.image.get_instance().visible
 
 
 def test_party_screen_handle_event(setup_pygame):

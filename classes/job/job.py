@@ -24,6 +24,24 @@ class Job(ABC):
         self.xp = xp
         self.level = level
 
+    def get_name(self):
+        """
+        Get the name of the job.
+
+        Returns:
+        str: The name of the job.
+        """
+        return self.name
+
+    def get_level(self):
+        """
+        Get the level of the job.
+
+        Returns:
+        int: The level of the job.
+        """
+        return self.level
+
     def add_xp(self, amount):
         """
         Add experience points to the job.

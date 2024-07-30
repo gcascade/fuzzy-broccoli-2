@@ -9,6 +9,16 @@ Module contents
    :undoc-members:
    :show-inheritance:
 
+.. automodule:: ui.components.character_summary
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: ui.components.image
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 .. automodule:: ui.components.label
    :members:
    :undoc-members:
