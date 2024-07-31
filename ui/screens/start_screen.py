@@ -1,7 +1,5 @@
 from typing import Callable
 
-from pygame.event import Event
-
 from ui.components.button import Button
 from ui.components.label import Label
 from ui.components.ui_manager import UIManager
@@ -41,25 +39,5 @@ class StartScreen(Screen):
             size=(int(1 / 8 * width), int(1 / 12 * height)),
             callback=start_game_callback,
         )
-
-    def clear(self) -> None:
-        """
-        Hide all elements of the start screen.
-        """
-        self.title_label.hide()
-        self.start_button.hide()
-
-    def handle_event(self, event: Event) -> None:
-        """
-        Handle an event by passing it to the start button.
-
-        :param event: The event to handle.
-        """
-        self.start_button.handle_event(event)
-
-    def activate(self) -> None:
-        """
-        Activate elements in the screen
-        """
-        self.title_label.show()
-        self.start_button.show()
+        self.elements.append(self.title_label)
+        self.elements.append(self.start_button)

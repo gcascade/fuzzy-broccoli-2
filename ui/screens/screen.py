@@ -1,6 +1,8 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 
 from pygame.event import Event
+
+from ui.components.element import Element
 
 
 class Screen(ABC):
@@ -18,26 +20,27 @@ class Screen(ABC):
         :param ui_manager: The UIManager instance managing this screen.
         """
         self.ui_manager = ui_manager
+        self.elements: list[Element] = []
 
-    @abstractmethod
     def clear(self) -> None:
         """
         Hide all elements of the screen.
         """
-        pass
+        for element in self.elements:
+            element.hide()
 
-    @abstractmethod
     def handle_event(self, event: Event) -> None:
         """
         Handle an event by passing it to the screen's components.
 
         :param event: The event to handle.
         """
-        pass
+        for element in self.elements:
+            element.handle_event(event)
 
-    @abstractmethod
     def activate(self) -> None:
         """
         Activate elements in the screen
         """
-        pass
+        for element in self.elements:
+            element.show()

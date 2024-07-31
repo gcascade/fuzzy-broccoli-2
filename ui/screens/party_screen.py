@@ -1,7 +1,5 @@
 from typing import Callable
 
-from pygame.event import Event
-
 from classes.character.character import Character
 from classes.job.novice import Novice
 from classes.job.student import Student
@@ -106,62 +104,38 @@ class PartyScreen(Screen):
             image_path="assets/images/characters/male_adventurer_2.png",
         )
 
-        self.character_1 = CharacterSummary(
+        self.character_1_summary = CharacterSummary(
             character=character_1,
             ui_manager=ui_manager,
             position=(x, y),
             size=character_size,
         )
 
-        self.character_2 = CharacterSummary(
+        self.character_2_summary = CharacterSummary(
             character=character_2,
             ui_manager=ui_manager,
             position=(x + character_space, y),
             size=character_size,
         )
 
-        self.character_3 = CharacterSummary(
+        self.character_3_summary = CharacterSummary(
             character=character_3,
             ui_manager=ui_manager,
             position=(x + 2 * character_space, y),
             size=character_size,
         )
 
-        self.character_4 = CharacterSummary(
+        self.character_4_summary = CharacterSummary(
             character=character_4,
             ui_manager=ui_manager,
             position=(x + 3 * character_space, y),
             size=character_size,
         )
 
-    def clear(self) -> None:
-        """
-        Hide all elements of the party screen.
-        """
-        self.title_label.hide()
-        self.back_button.hide()
-        self.message_box.hide()
-        self.character_1.hide()
-        self.character_2.hide()
-        self.character_3.hide()
-        self.character_4.hide()
-
-    def handle_event(self, event: Event) -> None:
-        """
-        Handle an event by passing it to the back button.
-
-        :param event: The event to handle.
-        """
-        self.back_button.handle_event(event)
-
-    def activate(self) -> None:
-        """
-        Show all elements of the party screen.
-        """
-        self.title_label.show()
-        self.back_button.show()
-        self.message_box.show()
-        self.character_1.show()
-        self.character_2.show()
-        self.character_3.show()
-        self.character_4.show()
+        self.elements.append(self.title_label)
+        self.elements.append(self.back_button)
+        self.elements.append(self.message_box)
+        self.elements.append(self.character_1_summary)
+        self.elements.append(self.character_2_summary)
+        self.elements.append(self.character_3_summary)
+        self.elements.append(self.character_4_summary)

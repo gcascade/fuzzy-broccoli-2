@@ -1,7 +1,5 @@
 from typing import Callable
 
-from pygame.event import Event
-
 from ui.components.button import Button
 from ui.components.ui_manager import UIManager
 from ui.screens.screen import Screen
@@ -73,31 +71,7 @@ class MainMenuScreen(Screen):
             callback=callbacks["quit"],
         )
 
-    def clear(self) -> None:
-        """
-        Hide all elements of the main menu screen.
-        """
-        self.play_button.hide()
-        self.view_party_button.hide()
-        self.settings_button.hide()
-        self.quit_button.hide()
-
-    def handle_event(self, event: Event) -> None:
-        """
-        Handle an event by passing it to the buttons.
-
-        :param event: The event to handle.
-        """
-        self.play_button.handle_event(event)
-        self.view_party_button.handle_event(event)
-        self.settings_button.handle_event(event)
-        self.quit_button.handle_event(event)
-
-    def activate(self) -> None:
-        """
-        Activate elements in the screen
-        """
-        self.play_button.show()
-        self.view_party_button.show()
-        self.settings_button.show()
-        self.quit_button.show()
+        self.elements.append(self.play_button)
+        self.elements.append(self.view_party_button)
+        self.elements.append(self.settings_button)
+        self.elements.append(self.quit_button)
