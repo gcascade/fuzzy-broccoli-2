@@ -14,6 +14,11 @@ Module contents
    :undoc-members:
    :show-inheritance:
 
+.. automodule:: ui.components.element
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 .. automodule:: ui.components.image
    :members:
    :undoc-members:

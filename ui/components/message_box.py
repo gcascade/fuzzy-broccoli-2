@@ -3,10 +3,11 @@ from typing import Tuple
 import pygame
 import pygame_gui
 
+from ui.components.element import Element
 from ui.components.ui_manager import UIManager
 
 
-class MessageBox:
+class MessageBox(Element):
     """
     A class to create and manage a message box in the game.
     """
@@ -26,7 +27,7 @@ class MessageBox:
         :param size: The (width, height) size of the message box.
         :param message: The message to display in the message box.
         """
-        self.manager = ui_manager
+        super().__init__(ui_manager)
         self.position = position
         self.size = size
         self.message = message
@@ -64,3 +65,11 @@ class MessageBox:
         """
         self.message = message
         self.message_box.set_text(message)
+
+    def handle_event(self, event):
+        """
+        Handle events for the message box. Message boxes do not respond to events.
+
+        :param event: The event to handle.
+        """
+        pass

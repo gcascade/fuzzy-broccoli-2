@@ -3,10 +3,11 @@ from typing import Callable, Tuple
 import pygame
 import pygame_gui
 
+from ui.components.element import Element
 from ui.components.ui_manager import UIManager
 
 
-class Button:
+class Button(Element):
     """
     A class to create and manage a button in the game.
     """
@@ -28,6 +29,7 @@ class Button:
         :param size: The (width, height) size of the button.
         :param callback: The function to call when the button is clicked.
         """
+        super().__init__(ui_manager)
         self.ui_button = pygame_gui.elements.UIButton(
             relative_rect=pygame.Rect(position, size),
             text=text,

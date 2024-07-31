@@ -1,11 +1,14 @@
 from typing import Tuple
 
+from pygame.event import Event
+
+from ui.components.element import Element
 from ui.components.image import Image
 from ui.components.label import Label
 from ui.components.ui_manager import UIManager
 
 
-class CharacterSummary:
+class CharacterSummary(Element):
     """
     A class to display a character summary including an image and text labels.
     """
@@ -25,8 +28,8 @@ class CharacterSummary:
         :param position: The (x, y) position of the top-left corner of the summary.
         :param size: The (width, height) size of the image.
         """
+        super().__init__(ui_manager)
         self.character = character
-        self.ui_manager = ui_manager
         self.image = Image(ui_manager, character.get_image_path(), position, size)
 
         label_width = size[0]
@@ -57,23 +60,33 @@ class CharacterSummary:
             (x, y + size[1] + 5 + 3 * label_height),
             (label_width, label_height),
         )
+        self.elements = [
+            self.image,
+            self.character_name,
+            self.character_level,
+            self.character_job,
+            self.character_job_level,
+        ]
 
     def hide(self):
         """
         Hide all elements of the character summary.
         """
-        self.image.hide()
-        self.character_name.hide()
-        self.character_level.hide()
-        self.character_job.hide()
-        self.character_job_level.hide()
+        for element in self.elements:
+            element.hide()
 
     def show(self):
         """
         Show all elements of the character summary.
         """
-        self.image.show()
-        self.character_name.show()
-        self.character_level.show()
-        self.character_job.show()
-        self.character_job_level.show()
+        for element in self.elements:
+            element.show()
+
+    def handle_event(self, event: Event) -> None:
+        """
+        Handle an event for the character summary.
+
+        :param event: The event to handle.
+        """
+        for element in self.elements:
+            element.handle_event(event)
