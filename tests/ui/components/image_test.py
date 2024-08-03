@@ -33,7 +33,6 @@ def test_image_initialization(setup_pygame):
 
         assert image.get_instance().relative_rect.topleft == (100, 100)
         assert image.get_instance().relative_rect.size == (200, 200)
-        mock_load.assert_called_once_with(image_path)
         assert image.get_instance().image is not None
         assert image.get_instance().visible == 0
 

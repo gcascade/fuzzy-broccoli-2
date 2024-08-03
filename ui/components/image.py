@@ -4,6 +4,7 @@ import pygame
 import pygame_gui
 from pygame.event import Event
 
+from core.files import resource_path
 from ui.components.element import Element
 from ui.components.ui_manager import UIManager
 
@@ -31,7 +32,7 @@ class Image(Element):
         super().__init__(ui_manager)
         self.ui_image = pygame_gui.elements.UIImage(
             relative_rect=pygame.Rect(position, size),
-            image_surface=pygame.image.load(image_path).convert_alpha(),
+            image_surface=pygame.image.load(resource_path(image_path)).convert_alpha(),
             manager=ui_manager.get_instance(),
             visible=0,
         )

@@ -1,3 +1,6 @@
+from classes.job.job import Job
+
+
 class Character:
     """
     A class to represent a character in the game.
@@ -118,3 +121,38 @@ class Character:
         str: A string representation of the character.
         """
         return f"Character(name={self.name}, xp={self.xp})"
+
+    def to_dict(self):
+        """
+        Return a dictionary representation of the character.
+
+        Returns:
+        dict: A dictionary representation of the character.
+        """
+        return {
+            "name": self.name,
+            "current_job": self.current_job.to_dict(),
+            "unlocked_jobs": [job.to_dict() for job in self.unlocked_jobs],
+            "xp": self.xp,
+            "level": self.level,
+            "image_path": self.image_path,
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        """
+        Create a character from a dictionary.
+
+        Parameters:
+        data (dict): A dictionary containing character data.
+
+        Returns:
+        Character: A new character created from the dictionary.
+        """
+        name = data["name"]
+        current_job = Job.from_dict(data["current_job"])
+        unlocked_jobs = [Job.from_dict(job) for job in data["unlocked_jobs"]]
+        xp = data["xp"]
+        level = data["level"]
+        image_path = data["image_path"]
+        return cls(name, current_job, image_path, unlocked_jobs, xp, level)

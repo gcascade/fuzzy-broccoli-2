@@ -9,6 +9,14 @@ Classes Module
 
    classes
 
+Core Module
+-----------------
+
+.. toctree::
+   :maxdepth: 1
+
+   core
+
 Scripts Module
 -----------------
 

@@ -1,4 +1,6 @@
 black
+configparser
+cryptography
 flake8>=7.1.0
 isort
 mypy>=1.10.0

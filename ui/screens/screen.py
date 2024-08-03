@@ -1,4 +1,5 @@
 from abc import ABC
+from typing import List
 
 from pygame.event import Event
 
@@ -20,7 +21,7 @@ class Screen(ABC):
         :param ui_manager: The UIManager instance managing this screen.
         """
         self.ui_manager = ui_manager
-        self.elements: list[Element] = []
+        self.elements: List[Element] = []
 
     def clear(self) -> None:
         """
@@ -40,7 +41,7 @@ class Screen(ABC):
 
     def activate(self) -> None:
         """
-        Activate elements in the screen
+        Activate elements in the screen.
         """
         for element in self.elements:
             element.show()

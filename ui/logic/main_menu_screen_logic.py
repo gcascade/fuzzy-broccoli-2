@@ -3,6 +3,9 @@ from typing import Callable
 
 import pygame
 
+from core.config import Config
+from core.data import get_initial_characters
+from core.game_data import GameData, load_key_from_config, save_game_data
 from ui.components.ui_manager import UIManager
 from ui.screens.party_screen import PartyScreen
 
@@ -26,6 +29,9 @@ def main_menu_screen_callbacks(
         print("Settings button clicked!")
 
     def quit_game():
+        key = load_key_from_config(Config.CONFIG_FILENAME)
+        game_data = GameData(characters=get_initial_characters())
+        save_game_data(game_data, Config.GAME_DATA_FILENAME, key)
         pygame.quit()
         sys.exit()
 

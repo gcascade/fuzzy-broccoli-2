@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from classes.job.job_registry import JobRegistry
+
 
 class Job(ABC):
     """
@@ -75,3 +77,26 @@ class Job(ABC):
         Return the description of the job.
         """
         pass
+
+    def to_dict(self):
+        """
+        Return the job as a dictionary.
+
+        Returns:
+        dict: The job as a dictionary.
+        """
+        return {"name": self.name, "xp": self.xp, "level": self.level}
+
+    @classmethod
+    def from_dict(cls, data):
+        """
+        Create a new Job from a dictionary.
+
+        Parameters:
+        data (dict): A dictionary containing the job data.
+
+        Returns:
+        Job: A new Job instance.
+        """
+        job_class = JobRegistry.get_job_class(data["name"])
+        return job_class.from_dict(data)

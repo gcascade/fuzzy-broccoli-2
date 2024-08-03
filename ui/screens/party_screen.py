@@ -1,8 +1,6 @@
 from typing import Callable
 
-from classes.character.character import Character
-from classes.job.novice import Novice
-from classes.job.student import Student
+from core.data import get_initial_characters
 from ui.components.button import Button
 from ui.components.character_summary import CharacterSummary
 from ui.components.label import Label
@@ -72,61 +70,31 @@ class PartyScreen(Screen):
             message="This is the party screen!\nHere you can view your party members.",
         )
 
-        character_1 = Character(
-            name="Elaine",
-            level=99,
-            current_job=Novice(),
-            xp=0,
-            image_path="assets/images/characters/female_adventurer_1.png",
-        )
-
-        character_2 = Character(
-            name="Arianne",
-            level=1,
-            current_job=Student(),
-            xp=0,
-            image_path="assets/images/characters/female_adventurer_2.png",
-        )
-
-        character_3 = Character(
-            name="Magnus",
-            level=1,
-            current_job=Student(),
-            xp=0,
-            image_path="assets/images/characters/male_adventurer_1.png",
-        )
-
-        character_4 = Character(
-            name="Roland",
-            level=1,
-            current_job=Novice(),
-            xp=0,
-            image_path="assets/images/characters/male_adventurer_2.png",
-        )
+        characters = get_initial_characters()
 
         self.character_1_summary = CharacterSummary(
-            character=character_1,
+            character=characters[0],
             ui_manager=ui_manager,
             position=(x, y),
             size=character_size,
         )
 
         self.character_2_summary = CharacterSummary(
-            character=character_2,
+            character=characters[1],
             ui_manager=ui_manager,
             position=(x + character_space, y),
             size=character_size,
         )
 
         self.character_3_summary = CharacterSummary(
-            character=character_3,
+            character=characters[2],
             ui_manager=ui_manager,
             position=(x + 2 * character_space, y),
             size=character_size,
         )
 
         self.character_4_summary = CharacterSummary(
-            character=character_4,
+            character=characters[3],
             ui_manager=ui_manager,
             position=(x + 3 * character_space, y),
             size=character_size,
