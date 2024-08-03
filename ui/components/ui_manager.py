@@ -4,6 +4,7 @@ import pygame
 import pygame_gui
 from pygame.event import Event
 
+from core.config import Config
 from ui.screens.screen import Screen
 
 
@@ -19,7 +20,9 @@ class UIManager:
         :param width: The width of the screen.
         :param height: The height of the screen.
         """
-        self.manager: pygame_gui.UIManager = pygame_gui.UIManager((width, height))
+        self.manager: pygame_gui.UIManager = pygame_gui.UIManager(
+            (width, height), theme_path=Config.THEME_FILENAME
+        )
         self.width: int = width
         self.height: int = height
         self.active_screen: Optional[Screen] = None
