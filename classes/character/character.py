@@ -1,3 +1,4 @@
+from classes.character.stats import Stats
 from classes.job.job import Job
 
 
@@ -13,7 +14,16 @@ class Character:
     level (int): The level of the character. Defaults to 1.
     """
 
-    def __init__(self, name, current_job, image_path, unlocked_jobs=[], xp=0, level=1):
+    def __init__(
+        self,
+        name,
+        current_job,
+        image_path,
+        stats: Stats,
+        unlocked_jobs=None,
+        xp=0,
+        level=1,
+    ):
         """
         Initialize a new character.
 
@@ -21,13 +31,17 @@ class Character:
         name (str): The name of the character.
         current_job (Job): The current job of the character.
         image_path (str): The path to the character's image.
-        unlocked_jobs (list): A list of jobs unlocked by the character. Defaults to an empty list.
+        unlocked_jobs (list): A list of jobs unlocked by the character. Defaults to None.
         xp (int): The experience points of the character. Defaults to 0.
         level (int): The level of the character. Defaults to 1.
         """
         self.name = name
         self.current_job = current_job
-        self.unlocked_jobs = unlocked_jobs
+        if unlocked_jobs is None:
+            self.unlocked_jobs = [current_job]
+        else:
+            self.unlocked_jobs = unlocked_jobs
+        self.stats = stats
         self.xp = xp
         self.level = level
         self.image_path = image_path
@@ -133,6 +147,7 @@ class Character:
             "name": self.name,
             "current_job": self.current_job.to_dict(),
             "unlocked_jobs": [job.to_dict() for job in self.unlocked_jobs],
+            "stats": self.stats.to_dict(),
             "xp": self.xp,
             "level": self.level,
             "image_path": self.image_path,
@@ -152,7 +167,8 @@ class Character:
         name = data["name"]
         current_job = Job.from_dict(data["current_job"])
         unlocked_jobs = [Job.from_dict(job) for job in data["unlocked_jobs"]]
+        stats = Stats.from_dict(data["stats"])
         xp = data["xp"]
         level = data["level"]
         image_path = data["image_path"]
-        return cls(name, current_job, image_path, unlocked_jobs, xp, level)
+        return cls(name, current_job, image_path, stats, unlocked_jobs, xp, level)
