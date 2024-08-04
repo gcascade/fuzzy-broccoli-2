@@ -1,4 +1,4 @@
-from typing import Callable, Tuple
+from typing import Callable, Optional, Tuple
 
 import pygame
 import pygame_gui
@@ -19,6 +19,9 @@ class Button(Element):
         position: Tuple[int, int],
         size: Tuple[int, int],
         callback: Callable[[], None],
+        on_hover: Optional[Callable[[], None]] = None,
+        on_hover_out: Optional[Callable[[], None]] = None,
+        image_path: Optional[str] = None,
     ):
         """
         Initialize a new Button.
@@ -28,6 +31,8 @@ class Button(Element):
         :param position: The (x, y) position of the top-left corner of the button.
         :param size: The (width, height) size of the button.
         :param callback: The function to call when the button is clicked.
+        :param on_hover: The function to call when the mouse hovers over the button.
+        :param on_hover_out: The function to call when the mouse leaves the button.
         """
         super().__init__(ui_manager)
         self.ui_button = pygame_gui.elements.UIButton(
@@ -36,7 +41,19 @@ class Button(Element):
             manager=ui_manager.get_instance(),
             visible=0,
         )
+        if image_path:
+            image = pygame.image.load(image_path).convert_alpha()
+            image = pygame.transform.scale(image, size)
+            self.ui_button.normal_image = image
+            self.ui_button.hovered_image = image
+            self.ui_button.selected_image = image
+            self.ui_button.disabled_image = image
+            self.ui_button.set_image(image)
+            self.ui_button.rebuild()
         self.callback = callback
+        self.on_hover = on_hover
+        self.on_hover_out = on_hover_out
+        self.hovering = False
 
     def get_instance(self) -> pygame_gui.elements.UIButton:
         """
@@ -69,6 +86,15 @@ class Button(Element):
             and event.ui_element == self.ui_button
         ):
             self.callback()
+        elif event.type == pygame.MOUSEMOTION:
+            if self.ui_button.relative_rect.collidepoint(event.pos):
+                if not self.hovering and self.on_hover:
+                    self.on_hover()
+                    self.hovering = True
+            else:
+                if self.hovering and self.on_hover_out:
+                    self.on_hover_out()
+                self.hovering = False
 
     def update(self, time_delta):
         """

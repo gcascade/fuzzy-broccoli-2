@@ -1,9 +1,10 @@
-from typing import Tuple
+from typing import Callable, Tuple
 
 from pygame.event import Event
 
+from classes.character.character import Character
+from ui.components.button import Button
 from ui.components.element import Element
-from ui.components.image import Image
 from ui.components.label import Label
 from ui.components.ui_manager import UIManager
 
@@ -19,6 +20,9 @@ class CharacterSummary(Element):
         ui_manager: UIManager,
         position: Tuple[int, int],
         size: Tuple[int, int],
+        on_click: Callable[[Character], None],
+        on_hover: Callable[[Character], None],
+        on_hover_out: Callable[[], None],
     ):
         """
         Initialize the character summary.
@@ -27,10 +31,22 @@ class CharacterSummary(Element):
         :param ui_manager: The UIManager instance managing this summary.
         :param position: The (x, y) position of the top-left corner of the summary.
         :param size: The (width, height) size of the image.
+        :param on_click: The function to call when the summary is clicked.
+        :param on_hover: The function to call when the mouse hovers over the summary.
+        :param on_hover_out: The function to call when the mouse leaves the summary.
         """
         super().__init__(ui_manager)
         self.character = character
-        self.image = Image(ui_manager, character.get_image_path(), position, size)
+        self.image = Button(
+            ui_manager=ui_manager,
+            text="",
+            position=position,
+            size=size,
+            callback=lambda: on_click(character),
+            on_hover=lambda: on_hover(character),
+            on_hover_out=on_hover_out,
+            image_path=character.get_image_path(),
+        )
 
         label_width = size[0]
         label_height = 24

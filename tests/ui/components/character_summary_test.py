@@ -29,6 +29,14 @@ def character():
     return character
 
 
+def empty_character_function(character: Character):
+    pass
+
+
+def empty_function():
+    pass
+
+
 def test_character_summary_initialization(setup_pygame, character):
     screen, manager, surface = setup_pygame
     position = (100, 100)
@@ -37,7 +45,15 @@ def test_character_summary_initialization(setup_pygame, character):
     with patch("pygame.image.load") as mock_load:
         mock_load.return_value = surface
 
-        summary = CharacterSummary(character, manager, position, size)
+        summary = CharacterSummary(
+            character,
+            manager,
+            position,
+            size,
+            empty_character_function,
+            empty_character_function,
+            empty_function,
+        )
 
         assert summary.character == character
         assert summary.image.get_instance().relative_rect.topleft == position
@@ -56,7 +72,15 @@ def test_character_summary_show(setup_pygame, character):
     with patch("pygame.image.load") as mock_load:
         mock_load.return_value = surface
 
-        summary = CharacterSummary(character, manager, position, size)
+        summary = CharacterSummary(
+            character,
+            manager,
+            position,
+            size,
+            empty_character_function,
+            empty_character_function,
+            empty_function,
+        )
         summary.show()
 
         assert summary.image.get_instance().visible == 1
@@ -74,7 +98,15 @@ def test_character_summary_hide(setup_pygame, character):
     with patch("pygame.image.load") as mock_load:
         mock_load.return_value = surface
 
-        summary = CharacterSummary(character, manager, position, size)
+        summary = CharacterSummary(
+            character,
+            manager,
+            position,
+            size,
+            empty_character_function,
+            empty_character_function,
+            empty_function,
+        )
         summary.hide()
 
         assert summary.image.get_instance().visible == 0

@@ -6,7 +6,12 @@ from ui.components.character_summary import CharacterSummary
 from ui.components.label import Label
 from ui.components.message_box import MessageBox
 from ui.components.ui_manager import UIManager
+from ui.logic.party_screen_logic import on_character_click, on_character_hover
 from ui.screens.screen import Screen
+
+message_box_init_message = (
+    "This is the party screen!\nHere you can view your party members."
+)
 
 
 class PartyScreen(Screen):
@@ -67,7 +72,7 @@ class PartyScreen(Screen):
             ui_manager=ui_manager,
             position=message_box_position,
             size=message_box_size,
-            message="This is the party screen!\nHere you can view your party members.",
+            message=message_box_init_message,
         )
 
         characters = get_initial_characters()
@@ -77,6 +82,9 @@ class PartyScreen(Screen):
             ui_manager=ui_manager,
             position=(x, y),
             size=character_size,
+            on_click=lambda character: on_character_click(ui_manager, character),
+            on_hover=lambda character: on_character_hover(self.message_box, character),
+            on_hover_out=lambda: self.message_box.set_message(message_box_init_message),
         )
 
         self.character_2_summary = CharacterSummary(
@@ -84,6 +92,9 @@ class PartyScreen(Screen):
             ui_manager=ui_manager,
             position=(x + character_space, y),
             size=character_size,
+            on_click=lambda character: on_character_click(ui_manager, character),
+            on_hover=lambda character: on_character_hover(self.message_box, character),
+            on_hover_out=lambda: self.message_box.set_message(message_box_init_message),
         )
 
         self.character_3_summary = CharacterSummary(
@@ -91,6 +102,9 @@ class PartyScreen(Screen):
             ui_manager=ui_manager,
             position=(x + 2 * character_space, y),
             size=character_size,
+            on_click=lambda character: on_character_click(ui_manager, character),
+            on_hover=lambda character: on_character_hover(self.message_box, character),
+            on_hover_out=lambda: self.message_box.set_message(message_box_init_message),
         )
 
         self.character_4_summary = CharacterSummary(
@@ -98,6 +112,9 @@ class PartyScreen(Screen):
             ui_manager=ui_manager,
             position=(x + 3 * character_space, y),
             size=character_size,
+            on_click=lambda character: on_character_click(ui_manager, character),
+            on_hover=lambda character: on_character_hover(self.message_box, character),
+            on_hover_out=lambda: self.message_box.set_message(message_box_init_message),
         )
 
         self.elements.append(self.title_label)
