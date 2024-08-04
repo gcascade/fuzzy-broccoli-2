@@ -90,3 +90,10 @@ class CharacterSummary(Element):
         """
         for element in self.elements:
             element.handle_event(event)
+
+    def update(self, time_delta):
+        """
+        Update the character summary.
+        :param time_delta: The time since the last update.
+        """
+        pass

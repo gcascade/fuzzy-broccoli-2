@@ -69,3 +69,10 @@ class Button(Element):
             and event.ui_element == self.ui_button
         ):
             self.callback()
+
+    def update(self, time_delta):
+        """
+        Update the button.
+        :param time_delta: The time since the last update.
+        """
+        pass

@@ -64,3 +64,10 @@ class Label(Element):
         :param event: The event to handle.
         """
         pass
+
+    def update(self, time_delta):
+        """
+        Update the label.
+        :param time_delta: The time since the last update.
+        """
+        pass

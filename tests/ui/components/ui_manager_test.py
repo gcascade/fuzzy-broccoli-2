@@ -16,6 +16,9 @@ class MockScreen(Screen):
     def activate(self):
         pass
 
+    def update(self, time_delta):
+        pass
+
 
 @pytest.fixture
 def setup_pygame():
@@ -63,6 +66,8 @@ def test_ui_manager_draw_ui(setup_pygame):
 
 def test_ui_manager_update(setup_pygame):
     screen, manager = setup_pygame
+    mock_screen = MockScreen(manager)
+    manager.set_active_screen(mock_screen)
     manager.update(0.016)
     # No exception means it passed
 

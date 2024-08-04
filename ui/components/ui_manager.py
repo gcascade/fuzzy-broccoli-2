@@ -60,6 +60,8 @@ class UIManager:
         :param time_delta: The time since the last update.
         """
         self.manager.update(time_delta)
+        if self.active_screen is not None:
+            self.active_screen.update(time_delta)
 
     def process_event(self, event: Event) -> None:
         """

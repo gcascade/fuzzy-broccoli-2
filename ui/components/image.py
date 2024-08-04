@@ -65,3 +65,10 @@ class Image(Element):
         :return:
         """
         pass
+
+    def update(self, time_delta):
+        """
+        Update the image.
+        :param time_delta: The time since the last update.
+        """
+        pass

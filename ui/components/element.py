@@ -41,3 +41,7 @@ class Element(ABC):
         :param event: The event to handle.
         """
         pass
+
+    @abstractmethod
+    def update(self, time_delta):
+        pass

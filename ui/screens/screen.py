@@ -1,9 +1,11 @@
 from abc import ABC
-from typing import List
+from typing import TYPE_CHECKING, List
 
 from pygame.event import Event
 
-from ui.components.element import Element
+if TYPE_CHECKING:
+    from ui.components.element import Element
+    from ui.components.ui_manager import UIManager
 
 
 class Screen(ABC):
@@ -14,14 +16,14 @@ class Screen(ABC):
     ui_manager (UIManager): The UIManager instance managing this screen.
     """
 
-    def __init__(self, ui_manager):
+    def __init__(self, ui_manager: "UIManager"):
         """
         Initialize the base screen.
 
         :param ui_manager: The UIManager instance managing this screen.
         """
         self.ui_manager = ui_manager
-        self.elements: List[Element] = []
+        self.elements: List["Element"] = []
 
     def clear(self) -> None:
         """
@@ -45,3 +47,12 @@ class Screen(ABC):
         """
         for element in self.elements:
             element.show()
+
+    def update(self, time_delta: float) -> None:
+        """
+        Update the screen elements.
+
+        :param time_delta: The time since the last update.
+        """
+        for element in self.elements:
+            element.update(time_delta)
