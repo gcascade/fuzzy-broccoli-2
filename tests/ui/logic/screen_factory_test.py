@@ -40,20 +40,25 @@ def test_create_start_screen(screen_factory):
 def test_create_main_menu_screen(screen_factory):
     with patch("ui.logic.screen_factory.MainMenuScreen") as MockMainMenuScreen:
         with patch("ui.logic.screen_factory.PartyScreen") as MockPartyScreen:
-            mock_screen_instance = MagicMock()
-            MockMainMenuScreen.return_value = mock_screen_instance
+            with patch("ui.logic.screen_factory.SettingsScreen") as MockSettingsScreen:
+                mock_screen_instance = MagicMock()
+                MockMainMenuScreen.return_value = mock_screen_instance
 
-            screen = screen_factory.create_screen(ScreenType.MAIN_MENU)
+                screen = screen_factory.create_screen(ScreenType.MAIN_MENU)
 
-            assert screen == mock_screen_instance
-            MockMainMenuScreen.assert_called_once_with(
-                screen_factory.ui_manager,
-                mock.ANY,
-            )
-            MockPartyScreen.assert_called_once_with(
-                screen_factory.ui_manager,
-                mock.ANY,
-            )
+                assert screen == mock_screen_instance
+                MockMainMenuScreen.assert_called_once_with(
+                    screen_factory.ui_manager,
+                    mock.ANY,
+                )
+                MockPartyScreen.assert_called_once_with(
+                    screen_factory.ui_manager,
+                    mock.ANY,
+                )
+                MockSettingsScreen.assert_called_once_with(
+                    screen_factory.ui_manager,
+                    mock.ANY,
+                )
 
 
 def test_create_party_screen(screen_factory):

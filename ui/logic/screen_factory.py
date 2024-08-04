@@ -5,6 +5,7 @@ from ui.logic.start_screen_logic import start_game
 from ui.screen_type import ScreenType
 from ui.screens.main_menu_screen import MainMenuScreen
 from ui.screens.party_screen import PartyScreen
+from ui.screens.settings_screen import SettingsScreen
 from ui.screens.start_screen import StartScreen
 
 
@@ -25,7 +26,9 @@ class ScreenFactory:
             return MainMenuScreen(
                 self.ui_manager,
                 main_menu_screen_callbacks(
-                    self.ui_manager, self.create_screen(ScreenType.VIEW_PARTY)
+                    self.ui_manager,
+                    self.create_screen(ScreenType.VIEW_PARTY),
+                    self.create_screen(ScreenType.SETTINGS),
                 ),
             )
 
@@ -37,10 +40,19 @@ class ScreenFactory:
                 ),
             )
 
+        def create_settings_screen():
+            return SettingsScreen(
+                self.ui_manager,
+                lambda: go_back(
+                    self.ui_manager, self.create_screen(ScreenType.MAIN_MENU)
+                ),
+            )
+
         screen_dict = {
             ScreenType.START: create_start_screen,
             ScreenType.MAIN_MENU: create_main_menu_screen,
             ScreenType.VIEW_PARTY: create_party_screen,
+            ScreenType.SETTINGS: create_settings_screen,
         }
 
         create_screen_func = screen_dict.get(screen_type)

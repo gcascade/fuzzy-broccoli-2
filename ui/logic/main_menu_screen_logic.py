@@ -8,10 +8,11 @@ from core.data import get_initial_characters
 from core.game_data import GameData, load_key_from_config, save_game_data
 from ui.components.ui_manager import UIManager
 from ui.screens.party_screen import PartyScreen
+from ui.screens.settings_screen import SettingsScreen
 
 
 def main_menu_screen_callbacks(
-    ui_manager: UIManager, party_screen: PartyScreen
+    ui_manager: UIManager, party_screen: PartyScreen, settings_screen: SettingsScreen
 ) -> dict[str, Callable[[], None]]:
     """
     Return a dictionary of main menu screen callbacks.
@@ -26,7 +27,7 @@ def main_menu_screen_callbacks(
         ui_manager.set_active_screen(party_screen)
 
     def settings():
-        print("Settings button clicked!")
+        ui_manager.set_active_screen(settings_screen)
 
     def quit_game():
         key = load_key_from_config(Config.CONFIG_FILENAME)

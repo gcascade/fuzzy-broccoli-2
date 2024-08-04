@@ -23,3 +23,8 @@ Module contents
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. automodule:: ui.logic.settings_screen_logic
+   :members:
+   :undoc-members:
+   :show-inheritance:

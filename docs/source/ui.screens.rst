@@ -23,3 +23,8 @@ Module contents
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. automodule:: ui.screens.settings_screen
+   :members:
+   :undoc-members:
+   :show-inheritance:
